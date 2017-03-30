@@ -1,0 +1,48 @@
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET", "id.html", true);
+  xhttp.send();
+
+  function myFunction(xml) {
+    var parser, xmlDoc;
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(xml.responseText,"text/html");
+    //document.getElementById("demo").innerHTML =
+      //xmlDoc.documentElement.parentNode.getElementById('TodoForm.html').innerHTML;
+      nodes = xmlDoc.documentElement.firstChild.childNodes;
+      len = nodes.length;
+      var templates = {};
+    for (i = 0; i < len ;i++) {
+        if (nodes[i].nodeName === 'SCRIPT') {
+          templates[nodes[i].id] = nodes[i].innerHTML;
+        }
+    }
+  }
+
+  function myLoop(x) {
+    var i, y, xLen, txt;
+    txt = "";
+    x = x.childNodes;
+    xLen = x.length;
+    for (i = 0; i < xLen ;i++) {
+
+        txt += x[i].nodeValue;
+
+    }
+    return txt;
+  }
+</script>
+
+</body>
+</html>
+
