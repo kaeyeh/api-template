@@ -1,27 +1,30 @@
-# Junk
+# API base class, Default HTTP Header and Template Aggregation
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.31.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## api.service.ts
+ get method return a multicast async subject that caches the http GET response (after process by the _map)
+ return this.http.get(root+'/'+resource)
+      .map(this._map, this)
+      .publishLast()    // publish, i.e. multicast(asyncSubject), only the last item observed to each Observer
+      .refCount();   // automatically calls Connect() and dispose() on the connection to the source observable
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
-## Build
+## http.option.ts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Inject the default header to the HTTP request
 
-## Running unit tests
+## template.service.ts
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Parse the template downloaded from AEM for component to used
 
-## Running end-to-end tests
+@Component({
+    selector: 'app-comp2',
+    template: templates['comp2.component'],
+    styleUrls: ['./comp2.component.css'],
+    providers: [UserService]
+  })
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
