@@ -31,7 +31,7 @@
       <th>Title</th>
       </thead>
       <tbody>
-      <tr *ngFor="let hero of tail$ | async">
+      <tr *ngFor="let hero of user.tail$(95) | async">
         <td>{{hero?.id}}</td>
         <td>{{hero?.title}}</td>
       </tr>
