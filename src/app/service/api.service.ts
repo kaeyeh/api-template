@@ -1,6 +1,7 @@
 import { Injectable, OnInit} from '@angular/core';
 
 import 'rxjs/add/operator/publishLast';
+import 'rxjs/add/operator/map';
 
 import {Http, Headers, RequestOptions} from '@angular/http';
 

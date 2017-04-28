@@ -1,9 +1,9 @@
-import {Injectable, Inject} from "@angular/core";
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { ObservableInput } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+// import {Injectable, Inject} from "@angular/core";
+// import { Http, Response } from '@angular/http';
+// import { Observable } from 'rxjs/Observable';
+// import { ObservableInput } from 'rxjs/Observable';
+// import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/catch';
 
 
 // export var templates = {};
@@ -32,8 +32,6 @@ import 'rxjs/add/operator/catch';
 //
 // }
 class TemplateService {
-  private xhttp = null;
-
   constructor () {
     this.parse(document.getElementById('_templates'));
   }
@@ -47,8 +45,6 @@ class TemplateService {
   }
 }
 export var templates = new TemplateService();
-
-
 
 
 // @Injectable()
