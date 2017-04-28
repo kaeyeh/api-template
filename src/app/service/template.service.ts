@@ -35,22 +35,15 @@ class TemplateService {
   private xhttp = null;
 
   constructor () {
-
     this.parse(document.getElementById('_templates'));
   }
 
   parse = (dom) => {
-    
-    var nodes = dom.childNodes;
-    var len = nodes.length;
-    // Filter not available?
-    //nodes.filter( node => node.nodeName === 'SCRIPT');
-    for (let i = 0; i < len; i++) {
-      if (nodes[i].nodeName === 'SCRIPT') {
-        this[nodes[i].id] = nodes[i].innerHTML;
+    dom.childNodes.forEach( node => {
+      if (node.nodeName === 'SCRIPT') {
+        this[node.id] = node.innerHTML;
       }
-    } 
-
+    });
   }
 }
 export var templates = new TemplateService();
