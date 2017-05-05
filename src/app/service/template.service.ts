@@ -1,3 +1,19 @@
+
+class TemplateService {
+  constructor () {
+    this.parse(document.getElementById('_templates'));
+  }
+
+  parse = (dom) => {
+    dom.childNodes.forEach( node => {
+      if (node.nodeName === 'SCRIPT') {
+        this[node.id] = node.innerHTML;
+      }
+    });
+  }
+}
+export var templates = new TemplateService();
+
 // import {Injectable, Inject} from "@angular/core";
 // import { Http, Response } from '@angular/http';
 // import { Observable } from 'rxjs/Observable';
@@ -31,21 +47,6 @@
 //   }
 //
 // }
-class TemplateService {
-  constructor () {
-    this.parse(document.getElementById('_templates'));
-  }
-
-  parse = (dom) => {
-    dom.childNodes.forEach( node => {
-      if (node.nodeName === 'SCRIPT') {
-        this[node.id] = node.innerHTML;
-      }
-    });
-  }
-}
-export var templates = new TemplateService();
-
 
 // @Injectable()
 // class TemplateService {
